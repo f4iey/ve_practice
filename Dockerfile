@@ -14,7 +14,7 @@ RUN yarn install --frozen-lockfile
 COPY . .
 
 # Build the Next.js application
-RUN npm run build
+RUN yarn build
 
 # Create a minimal runtime image
 FROM node:alpine
@@ -27,10 +27,10 @@ COPY --from=builder /app/.next ./.next
 
 # Install production dependencies
 COPY package.json ./
-RUN npm install --production
+RUN yarn install
 
 # Expose the port
 EXPOSE 3000
 
 # Start the Next.js server
-CMD ["npm", "run", "dev"]
+CMD ["yarn", "dev"]
