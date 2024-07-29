@@ -1,11 +1,11 @@
 #!/bin/python
 
 import requests
-import errno
 import zipfile
 import os
 import csv
 import json
+import random
 
 def get_questions_db(exam_type):
     exam_type = 'adv' if exam_type == 'a' else 'basic'
@@ -28,27 +28,31 @@ def txtdb_to_json(filename, exam_type):
         questions = csv.DictReader(csvfile, delimiter=';', quotechar='|')
         for row in questions:
             # Convert lists of incorrect answers to individual dictionaries
-            english_incorrect_answers = [{"answer": answer} for answer in row['incorrect_answer_1_english'].split(';')]
-            english_incorrect_answers.extend([{"answer": answer} for answer in row['incorrect_answer_2_english'].split(';')])
-            english_incorrect_answers.extend([{"answer": answer} for answer in row['incorrect_answer_3_english'].split(';')])
-            french_incorrect_answers = [{"answer": answer} for answer in row['incorrect_answer_1_french'].split(';')]
-            french_incorrect_answers.extend([{"answer": answer} for answer in row['incorrect_answer_2_french'].split(';')])
-            french_incorrect_answers.extend([{"answer": answer} for answer in row['incorrect_answer_3_french'].split(';')])
+            #english_incorrect_answers = [{"answer": answer} for answer in row['incorrect_answer_1_english'].split(';')]
+            #english_incorrect_answers.extend([{"answer": answer} for answer in row['incorrect_answer_2_english'].split(';')])
+            #english_incorrect_answers.extend([{"answer": answer} for answer in row['incorrect_answer_3_english'].split(';')])
+            #french_incorrect_answers = [{"answer": answer} for answer in row['incorrect_answer_1_french'].split(';')]
+            #french_incorrect_answers.extend([{"answer": answer} for answer in row['incorrect_answer_2_french'].split(';')])
+            #french_incorrect_answers.extend([{"answer": answer} for answer in row['incorrect_answer_3_french'].split(';')])
+            answers = [row['correct_answer_english']]
+            answers.extend(row['incorrect_answer_1_english'].split(';'))
+            answers.extend(row['incorrect_answer_2_english'].split(';'))
+            answers.extend(row['incorrect_answer_3_english'].split(';'))
+            random.shuffle(answers)
 
             # Create a dictionary for the current question
             question_data = {
-                "question_id": row['question_id '],
-                "question_english": row['question_english'],
-                "correct_answer_english": row['correct_answer_english'],
-                "incorrect_answers_english": english_incorrect_answers,
-                "question_french": row['question_french'],
-                "correct_answer_french": row['correct_answer_french'],
-                "incorrect_answers_french": french_incorrect_answers
+                "id": row['question_id '],
+                "question": row['question_english'],
+                "image": None,
+                "answers": answers,
+                "correct": answers.index(row['correct_answer_english']),
+                "category": row['question_id '][:5]
             }
             data.append(question_data)
     questions_array = {"questions": data}
     final_json = get_category_array(exam_type)
-    final_json.append(questions_array)
+    final_json.update(questions_array)
     with open('questions.json', 'w') as json_file:
         json.dump(final_json, json_file, indent=4)
     print("File successfully written to questions.json!")
