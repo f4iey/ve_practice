@@ -33,4 +33,4 @@ RUN npm install --production
 EXPOSE 3000
 
 # Start the Next.js server
-CMD ["node", ".next/server/main.js"]
+CMD ["npm", "run", "dev"]
