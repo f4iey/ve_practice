@@ -23,7 +23,8 @@
     "react-katex": "^3.0.1",
     "sharp": "^0.32.6",
     "zustand": "^4.4.1",
-    "adm-zip": "^0.5.14"
+    "adm-zip": "^0.5.14",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",

@@ -11,7 +11,7 @@ let json: QuestionFile | null = null;
 
 const openFile = async (examSelection: string): Promise<QuestionFile> => {
   if (json) return json;
-  if (examSelection == 'Advanced') const filePath = '/questions_advanced.json'; else const filePath = '/questions.json'
+  if (examSelection == 'Advanced') const filePath = '/questions_advanced.json'; else const filePath = '/questions.json';
   //questions.json defaults to basic
   json = JSON.parse(await fetch(filePath).then((res) => res.text()));
 

@@ -63,7 +63,7 @@ const basicAdvanced: React.FC = () => {
     </div>
   );
 };
-export default basicAdvanced;
+export const basicAdvanced;
 
 const useStore = create<IzpitQuizStore>((set) => ({
   state: QuizState.Ready,
