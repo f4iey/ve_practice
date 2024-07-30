@@ -60,6 +60,7 @@ const classes = [
 
 export default function Home() {
   return (
+    <>
       <div className="section container prose">
         <h1>What is ham radio?</h1>
         <p>
@@ -103,6 +104,7 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
+              </div>
             ))}
           </div>
         </div>
@@ -204,5 +206,6 @@ export default function Home() {
           ))}
         </ul>
       </div>
+    </>  
   );
 }
