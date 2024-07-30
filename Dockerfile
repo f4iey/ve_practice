@@ -33,4 +33,4 @@ RUN yarn install
 EXPOSE 3000
 
 # Start the Next.js server
-CMD ["yarn", "dev"]
+CMD ["yarn", "start"]
