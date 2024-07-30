@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import Modal from '../components/modal';
 import { Question } from '@/interfaces/question';
 import { getExamQuestions } from '@/util/question-util';
 import { create } from 'zustand';
@@ -25,6 +27,44 @@ interface IzpitQuizStore {
   reset: () => Promise<void>;
 }
 
+const basicAdvanced: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [selection, setSelection] = useState<string>('');
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleSelect = (choice: 'Basic' | 'Advanced') => {
+    setSelection(choice);
+    setShowModal(false);
+    console.log(`You selected: ${choice}`);
+  };
+
+  const getSelection = (): string => {
+    return selection;
+  };
+
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="text-center">
+        <button className="btn btn-primary" onClick={handleOpenModal}>
+          Choose exam type
+        </button>
+        <p className="mt-4">
+          {selection ? `You selected: ${selection}` : 'No selection made yet.'}
+        </p>
+      </div>
+      <Modal show={showModal} onClose={handleCloseModal} onSelect={handleSelect} />
+    </div>
+  );
+};
+export default basicAdvanced;
+
 const useStore = create<IzpitQuizStore>((set) => ({
   state: QuizState.Ready,
 
@@ -34,8 +74,12 @@ const useStore = create<IzpitQuizStore>((set) => ({
 
   load: async () => {
     set({ state: QuizState.Loading });
-
-    const questions = await getExamQuestions(new Date().valueOf());
+    //look for basic or advanced questions and pass it through: no selection leads to basic
+    if (getSelection() == 'Advanced'){
+      const questions = await getExamQuestions(new Date().valueOf(), 50, 2, 'Advanced');
+    } else {
+      const questions = await getExamQuestions(new Date().valueOf(), 100, 4, 'Basic');
+    }
 
     set({
       state: QuizState.InProgress,

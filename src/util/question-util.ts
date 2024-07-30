@@ -9,16 +9,17 @@ interface QuestionFile {
 
 let json: QuestionFile | null = null;
 
-const openFile = async (): Promise<QuestionFile> => {
+const openFile = async (examSelection: string): Promise<QuestionFile> => {
   if (json) return json;
-
-  json = JSON.parse(await fetch('/questions.json').then((res) => res.text()));
+  if (examSelection == 'Advanced') const filePath = '/questions_advanced.json'; else const filePath = '/questions.json'
+  //questions.json defaults to basic
+  json = JSON.parse(await fetch(filePath).then((res) => res.text()));
 
   return json!;
 };
 
-export const getQuestions = async (): Promise<Question[]> => {
-  const file = await openFile();
+export const getQuestions = async (examSelection: string): Promise<Question[]> => {
+  const file = await openFile(examSelection);
 
   return file.questions.map((question) => ({
     id: question.id,
@@ -44,10 +45,11 @@ export const getExamQuestions = async (
   seed: number,
   count: number = 60,
   maxPerCategory: number = 2,
+  examSelection: string,
 ): Promise<Question[]> => {
   const rnd = new Random(seed);
 
-  const questions = await getQuestions();
+  const questions = await getQuestions(examSelection);
 
   // TODO Correct
   // Shuffle questions
