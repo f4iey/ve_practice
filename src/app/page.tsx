@@ -4,68 +4,56 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  description: 'Informacije o radioamaterstvu in izpitu za pridobitev licence',
+  description: 'About Amateur Radio licensing',
   openGraph: {
     description:
-      'Informacije o radioamaterstvu in izpitu za pridobitev licence',
+      'About Amateur Radio licensing',
   },
 };
 
 const povezave = [
   {
-    label: 'Izpitni roki ZRS',
-    href: 'https://www.hamradio.si/kako-postati-radioamater/',
+    label: 'ISED Exam generator',
+    href: 'https://ised-isde.canada.ca/site/amateur-radio-operator-certificate-services/en/amateur-radio-exam-generator/',
   },
   {
-    label: 'Kriteriji za izpit',
-    href: 'https://zrs.si/files/kriteriji.pdf',
+    label: 'Info on the Amateur Radio Service in Canada (RIC-3)',
+    href: 'https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-3-information-amateur-radio-service',
   },
   {
-    label: 'Seznam zasedenih klicnih znakov',
-    href: 'https://www.akos-rs.si/registri/seznam-registrov/radioamaterji',
+    label: 'ISED Callsign directory',
+    href: 'https://apc-cap.ic.gc.ca/pls/apc_anon/query_amat_cs$.startup',
   },
 ];
 
 const classes = [
   {
     premium: false,
-    name: 'N razred',
+    name: 'Basic qualification',
     description:
-      'N razred je namenjen začetnikom, ki se šele spoznavajo z radioamaterstvom in niso še tako vešči v elektroniki.',
+      'The Basic qualification is the first license level containing 100 questions about basic knowledge in STEM fields, radio propagation and antenna systems.',
     perks: [
       <>
-        Uporaba le nekaterih frekvenčnih pasov{' '}
-        <span className="text-sm font-light">(4 KV, 4 UKV)</span>
+        Limited to bands above 30 MHz{' '}
       </>,
       <>
-        Manjša moč{' '}
-        <span className="text-sm font-light">(KV - 100 W, UKV - 25 W)</span>
+        Limited Power{' '}
+        <span className="text-sm font-light">(560 W SSB/CW, 190 W AM/FM)</span>
       </>,
-      <>Ozek izbor klicnih znakov</>,
+      <>Minimal 70% score. 80% score gives "Basic with Honours" and allows HF.</>,
     ],
-    callsigns: ['S52AAA - S52XZZ in S52ZAA - S52ZZZ', 'S58AAA - S58XZZ'],
   },
   {
     premium: true,
-    name: 'A razred',
+    name: 'Advanced qualification',
     description:
-      'A razred je namenjen tistim, ki želijo delovati na vseh amaterskih frekvencah in z večjo močjo.',
+      'The Advanced qualification is a more technical test with 50 questions and allows more privileges such as installing or building its own equipment',
     perks: [
-      <>Uporaba vseh radioamaterskih frekvenčnih pasov</>,
+      <>Unlocks all amateur bands{' '}<span className="text-sm font-light">(see RAC band plan)</span></>,
       <>
-        Večja moč <span className="text-sm font-light">(do 1500 W)</span>
+        Higher output power <span className="text-sm font-light">(2250 W SSB/CW, 750W AM/FM)</span>
       </>,
-      <>Širši izbor klicnih znakov</>,
-      <>Uporaba radioamaterskih satelitskih storitev</>,
-    ],
-    callsigns: [
-      'S50A - S59Z',
-      'S50AA - S59ZZ',
-      'S50AAA - S50XZZ',
-      'S54AAA - S54XZZ in S54ZAA - S54ZZZ',
-      'S56AAA - S56XZZ in S56ZAA - S56ZZZ',
-      'S57AAA - S57XZZ in S57ZAA - S57ZZZ',
-      'S58ZAA - S58ZZZ',
+      <>Build and install its own station</>,
     ],
   },
 ];
@@ -74,23 +62,22 @@ export default function Home() {
   return (
     <>
       <div className="section container prose">
-        <h1>Kaj je radioamaterstvo?</h1>
+        <h1>What is ham radio?</h1>
         <p>
-          Radioamaterstvo je ljubiteljsko, nepoklicno ukvarjanje z radiom in
-          radiotehniko. Vsak radioamater v radioamaterstvu najde nekaj kar ga
-          zanima. Nekateri se ukvarjajo z gradnjo radijskih postaj, drugi z
-          vzpostavljanjem radijskih zvez, nekateri radi tekmujejo v
-          vzpostavljanju radijskih zvez ali pa iskanjem skritih oddajnikov.
-          Radioamaterji so tudi pomočniki v primeru naravnih nesreč, ko se
-          porušijo komunikacijske povezave. Radioamaterji uporabljajo določene
-          frekvence, ki so jim dodeljene s strani mednarodne organizacije ITU.
+        Radio amateur is a non-profit hobby involving every aspects of radioelectricity.
+        Every amateur (ham) finds their own interest.
+        Some are involved in building radio stations, others with
+        establishing radio communications, some like to compete in
+        establishing radio communications or searching for hidden transmitters.
+        Radio amateurs are also assistants in the event of natural disasters when
+        the main communications are down.
         </p>
       </div>
 
       <div className="bg-light">
         <div className="section container">
           <div className="prose mx-auto">
-            <h2 className="text-center">Razreda radioamaterjev</h2>
+            <h2 className="text-center">Amateur radio qualification levels</h2>
           </div>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-6 md:flex-row md:items-stretch">
@@ -117,133 +104,99 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-
-                <div className={`divider ${c.premium ? '!bg-gray-500' : ''}`} />
-
-                <h5 className="mb-2 text-center font-semibold">Klicni znaki</h5>
-                <ul className="text-sm">
-                  {c.callsigns.map((cs, i) => (
-                    <li key={i}>{cs}</li>
-                  ))}
-                </ul>
-              </div>
             ))}
           </div>
         </div>
       </div>
 
       <div className="section container prose">
-        <h2>O izpitu</h2>
-        <p>Na izpitu se preverja znanje iz naslednjih področij:</p>
-        <ul>
-          <li>Zgodovina, razvoj in pomen radioamaterstva</li>
-          <li>Osnovni pojmi o radijskih komunikacijah</li>
-          <li>Predpisi za amaterske radijske komunikacije</li>
-          <li>Pravila in praksa v amaterskih radijskih komunikacijah</li>
-          <li>Elektrotehnika</li>
-          <li>Radiotehnika</li>
-        </ul>
+        <h2>About the exams</h2>
+        <p>The qualification exams tests your knowledge on the following themes:</p>
+        <h3>Basic qualification</h3>
+        <ol>
+          <li>Regulations and Policies</li>
+          <li>Operating and Procedures</li>
+          <li>Station Assembly, Practice and Safety</li>
+          <li>Circuit Components</li>
+          <li>Basic Electronics and Theory</li>
+          <li>Feedlines and Antenna Systems</li>
+          <li>Radio Wave Propagation</li>
+          <li>Interference and Suppression</li>
+        </ol>
+        <h3>Advanced qualification</h3>
+        <ol>
+          <li>Advanced Theory</li>
+          <li>Advanced Components and Circuits</li>
+          <li>Measurements</li>
+          <li>Power Supplies</li>
+          <li>Transmitters, Modulation and Processing</li>
+          <li>Receivers </li>
+          <li>Feedlines - Matching and Antenna Systems</li>
+        </ol>
         <p>
-          Za točno vsebino, si oglej{' '}
-          <Link target="_blank" href="https://zrs.si/files/kriteriji.pdf">
-            kriterij za izpit
+          For more details{' '}
+          <Link target="_blank" href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-3-information-amateur-radio-service">
+            RIC-3
           </Link>{' '}
-          ali pa si oglej <Link href="/zbirka">zbirko vprašanj</Link>, ki se
-          lahko pojavijo na izpitu.
+          Or see <Link href="/zbirka">the official question pool</Link>, which is used for generating the exams.
         </p>
 
-        <h3>Preizkus sprejema in oddaje Morzejevih znakov</h3>
-        <p>
-          Kandidat, ki na lastno željo opravlja izpit iz predmeta Sprejem in
-          oddaja Morzejevih znakov, mora dokazati, da je sposoben v Morzejevih
-          znakih (mednarodni Morse-kod) sprejemati na sluh in s tipkalom
-          oddajati odprti tekst, skupine številk, ločila in druge znake pri
-          hitrosti 25 znakov na minuto.
-        </p>
+        <h3>Morse Code qualification</h3>
+        <blockquote cite="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-3-information-amateur-radio-service">
+          <p>The examination for this qualification consists of sending 
+          and receiving Morse Code at a speed of not less than 5 words per minute (w.p.m.)
+          for three consecutive minutes.
+          The Morse Code examination is in plain language and may include the 26 letters, the 10 numbers, comma, period, 
+          question mark, dash, fraction bar, Q-signals and emergency signals. In both the sending and receiving examinations, 
+          each character omitted or incorrectly sent or received is counted as one error. 
+          A mark of 100% is awarded for five errors or less, 99% for six errors, 98% for seven errors, 97% for eight errors, etc. 
+          The examiner will allow candidates two minutes to review and correct their copy before it is graded. 
+          The pass mark is 100%.</p>
+        </blockquote>
+        <p>—ISED, <cite>RIC-3</cite></p>
 
-        <h3>Izpitni roki</h3>
+        <h3>Finding remote examiner</h3>
         <p>
-          Zveza radioamaterjev Slovenije nekajkrat letno organizira izpite za
-          radioamaterje. Izpitni roki so objavljeni na{' '}
+          ISED maintains a list of RAC accredited examiners. For remote exams, see the{' '}
           <Link
             target="_blank"
-            href="https://www.hamradio.si/kako-postati-radioamater/"
+            href="https://lid.radio/ham-exams"
           >
-            spletni strani ZRS
+            list of AEs offering remote exams
           </Link>
-          . Poleg teh izpitov lahko radioklubi organizirajo izpite za svoje
-          tečajnike.
+          . <em>VA3IEY Soon™</em>
         </p>
 
-        <h2>Vsebine za pripravo na izpit</h2>
+        <h2>Getting prepared</h2>
         <p>
-          Vsa snov, ki se lahko pojavi v izpitnih vprašanjih je vsebovana v{' '}
+          The best method is to study the questions directly on {' '}
           <Link
             target="_blank"
-            href="https://www.s59veg.si/files/prirocnik_2019.pdf"
+            href="https://ised-isde.canada.ca/site/amateur-radio-operator-certificate-services/en/amateur-radio-exam-generator"
           >
-            Priročniku za radioamaterje (3. izdaja)
+            the ISED generator
           </Link>
-          . V 3. izdaji je bilo najdenih že nekaj napak in predvsem manjkajoče
-          poglavje o detektorjih, zato je bolj priporočljiva{' '}
-          <Link
-            target="_blank"
-            href="https://www.radioamater.si/wp-content/uploads/2016/01/prirocnik-za-radioamaterje_2izd.pdf"
-          >
-            2. izdaja priročnika
-          </Link>
-          .
         </p>
         <p>
-          Če ti je branje priročnika preveč dolgočasno, si lahko pomagaš s
-          prosojnicami, ki jih pripravljajo v radioklubih, ki izvajajo tečaje.
-          Seveda pa je na internetu na voljo tudi veliko drugih gradiv, ki so
-          lahko v pomoč pri učenju.
+          The exam can be taken either in English or French. Before requesting to pass the exam in French, make sure your examiner
+          is able to do so. Otherwise, you can ask for correspondence from ISED.
+        </p>
+        <p>
+          You can study using{' '}
+          <Link href="/priprave">the training page</Link>, which contains the same questions from the original exam.
+        </p>
+        <p>
+          When you feel ready,{' '}
+          <Link href="/izpit-sim">you can take the test here</Link>. The exam has no time limit and retesting is allowed.
         </p>
 
-        <h2>Vaje za izpit</h2>
+        <h2>After the examination</h2>
         <p>
-          Pred izpitom si lahko ogledaš{' '}
-          <Link href="/zbirka">zbirko vprašanj</Link>, ki se lahko pojavijo na
-          izpitu.
-          {/* Cela zbirka vprašanj je na voljo
-          tudi v{' '}
-          <Link href="#">
-            PDF obliki
-          </Link>
-          . */}
+          After passing the exam, you will receive an email to register on the ISED platform and will be asked to apply
+          for a callsign. More details on callsigns here:{' '}
+          <Link href="/licenca">Applying for a callsign</Link>.
         </p>
-        <p>
-          Nato si lahko tudi pomagaš s sistemom za{' '}
-          <Link href="/priprave">vajo vprašanj</Link>, kjer lahko rešuješ
-          vprašanja iz zbirke in se pravilni in napačni odgovori sproti
-          prikazujejo.
-        </p>
-        <p>
-          Lahko pa tudi poskusiš{' '}
-          <Link href="/izpit-sim">rešiti preizkusni test</Link>, kjer imaš na
-          voljo 90 minut časa za reševanje 60 vprašanj.
-        </p>
-
-        <h2>Po opravljenem izpitu</h2>
-        <p>
-          Po opravljenem izpitu lahko zaprosiš za klicni znak (CEPT licenco) na
-          agenciji za komunikacijska omrežja in storitve Republike Slovenije
-          (AKOS). Več o tem si lahko prebereš na podstrani{' '}
-          <Link href="/licenca">Licenca</Link>.
-        </p>
-        <p>
-          Pred začetkom oddajanja pa je priporočljivo prebrati še{' '}
-          <Link
-            target="_blank"
-            href="https://www.s59veg.si/files/etika_junij_2021.pdf"
-          >
-            Etiko in operaterske postopke
-          </Link>
-          .
-        </p>
-
-        <h2>Uporabne povezave</h2>
+        <h2>Links</h2>
         <ul>
           {povezave.map(({ label, href }) => (
             <li key={label}>

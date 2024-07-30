@@ -12,27 +12,27 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  applicationName: 'Radioamaterski izpit',
+  applicationName: 'Amateur Radio VE Exam Practice',
   title: {
-    default: 'Radioamaterski izpit',
-    template: '%s | Radioamaterski izpit',
+    default: 'Amateur Radio Exam Practice',
+    template: '%s | Amateur Radio Exam Practice',
   },
-  description: 'Priprava na radioamaterski izpit',
+  description: 'Study for the Amateur Radio VE License',
   icons: {
     icon: '/logo/icon_512.png',
     shortcut: '/logo/icon_512.png',
   },
   creator: 'Jakob Kordež [S52KJ]',
   manifest: '/manifest.json',
-  metadataBase: new URL('https://izpit.jkob.cc'),
+  metadataBase: new URL('https://vep.f4iey.fr'),
   openGraph: {
     title: {
-      default: 'Radioamaterski izpit',
-      template: '%s | Radioamaterski izpit',
+      default: 'Amateur Radio Exam Practice',
+      template: '%s | Amateur Radio Exam Practice',
     },
-    description: 'Priprava na radioamaterski izpit',
-    url: 'https://izpit.jkob.cc/',
-    locale: 'sl_SL',
+    description: 'Study for the Amateur Radio VE License',
+    url: 'https://vep.f4iey.fr',
+    locale: 'en_US',
     type: 'website',
   },
   robots: {
@@ -51,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="sl">
+    <html lang="en">
       <head />
       <body className={`${inter.className} ${morse.variable}`}>
         <Header />
