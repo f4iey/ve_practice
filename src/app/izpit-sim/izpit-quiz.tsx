@@ -27,7 +27,7 @@ interface IzpitQuizStore {
   reset: () => Promise<void>;
 }
 
-const basicAdvanced: React.FC = () => {
+export const BasicAdvanced: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [selection, setSelection] = useState<string>('');
 
@@ -63,7 +63,6 @@ const basicAdvanced: React.FC = () => {
     </div>
   );
 };
-export const basicAdvanced;
 
 const useStore = create<IzpitQuizStore>((set) => ({
   state: QuizState.Ready,

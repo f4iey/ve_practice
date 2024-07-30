@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import IzpitQuiz from './izpit-quiz';
+import { BasicAdvanced } from './izpit-quiz';
 import { SubHeader } from '@/components/sub_header';
 
 export const metadata: Metadata = {
