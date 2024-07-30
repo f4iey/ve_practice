@@ -88,7 +88,7 @@ export default function CallsignTool() {
           className={`rounded-lg border border-light py-3 text-center text-3xl uppercase shadow-lg placeholder:font-sans placeholder:normal-case ${robotoMono.className}`}
           value={callsign}
           onChange={(e) => setCallsign(e.target.value)}
-          placeholder='npr. "S50HQ"'
+          placeholder='e.g "VA3RAC"'
         />
         <div className="mt-1 flex flex-row gap-2">
           {clas ? (

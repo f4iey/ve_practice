@@ -3,11 +3,11 @@ import { Metadata } from 'next';
 import CallsignTool from './callsign-tool';
 
 export const metadata: Metadata = {
-  title: 'Izbira klicnega znaka',
-  description: 'Pomoč pri izbiri klicnega znaka',
+  title: 'Callsign Selection',
+  description: 'PCallsign Selection Helper',
   openGraph: {
-    title: 'Izbira klicnega znaka',
-    description: 'Pomoč pri izbiri klicnega znaka',
+    title: 'Callsign selection',
+    description: 'Callsign Selection Helper',
   },
 };
 
@@ -15,10 +15,9 @@ export default function Callsign() {
   return (
     <>
       <SubHeader>
-        <h1>Pomoč pri izbiri klicnega znaka</h1>
+        <h1>Callsign Selection Helper</h1>
         <p className="text-lg">
-          Spodaj vpiši želen klicni znak in preveri, če je ta že zaseden in če
-          ustreza izbranem razredu.
+          Enter the desired callsign
         </p>
       </SubHeader>
 

@@ -25,7 +25,7 @@ export function generateAllCallsigns({
 
   for (let i = 0; i < 10; ++i) {
     for (let x = 0; x < 26; ++x) {
-      const a = `S5${i}${String.fromCharCode(x + 65)}`;
+      const a = `S5${i}${String.fromCharCode(x + 65)}`; //to change
       if (!excludeSet.has(a) && (!filter || filter.test(a))) ret.push(a);
 
       for (let y = 0; y < 26; ++y) {
