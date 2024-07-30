@@ -3,11 +3,11 @@ import IzpitQuiz from './izpit-quiz';
 import { SubHeader } from '@/components/sub_header';
 
 export const metadata: Metadata = {
-  title: 'Simulator izpita',
-  description: 'Pripomoček za simuliranje izpita za radioamaterski izpit',
+  title: 'Exam Simulator',
+  description: 'Amateur Radio Exam Simulation',
   openGraph: {
-    title: 'Simulator izpita',
-    description: 'Pripomoček za simuliranje izpita za radioamaterski izpit',
+    title: 'Exam Simulator',
+    description: 'Amateur Radio Exam Simulation',
   },
 };
 
@@ -15,12 +15,11 @@ export default function Priprave() {
   return (
     <>
       <SubHeader>
-        <h1>Simulator izpita</h1>
+        <h1>Exam Simulator</h1>
         <p>
-          Izpit je sestavljen iz <strong>60 različnih vprašanj</strong>. Vsako
-          vprašanje ima 3 možne odgovore, od katerih je samo en pravilen.
-          Kandidat ima na voljo 90 minut za reševanje izpitne pole. Kandidat
-          mora <strong>pravilno odgovoriti vsaj na 36 vprašanj</strong> (60 %).
+          The exam is either made of <strong>100 or 50 questions</strong> depending
+          on the chosen qualification (respectively Basic and Advanced).
+          Time is unlimited and <strong>pass mark is 70%</strong>.
         </p>
       </SubHeader>
 

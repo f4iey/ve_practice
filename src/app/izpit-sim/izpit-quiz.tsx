@@ -71,7 +71,7 @@ export default function IzpitQuiz() {
       {state === QuizState.Ready && (
         <div className="section">
           <button className="button mx-auto" onClick={load}>
-            Začni
+            Begin
           </button>
         </div>
       )}
@@ -111,7 +111,7 @@ export default function IzpitQuiz() {
             )
           }
         >
-          Zaključi
+          Finish
         </button>
       </div>
     );
@@ -122,20 +122,20 @@ export default function IzpitQuiz() {
       <>
         <div className="bg-light">
           <div className="section container flex flex-col items-center">
-            <h2 className="text-xl">Rezultat</h2>
+            <h2 className="text-xl">Result</h2>
             <p className="text-4xl">
               {correctCount} / {answers!.length} (
               {Math.round((correctCount! / answers!.length) * 1000) / 10} %)
             </p>
             <button className="button mt-6" onClick={reset}>
-              Nazaj na začetek
+              Retry
             </button>
           </div>
         </div>
 
         <div className="section">
           <h1 className="mb-10 text-center text-2xl font-semibold">
-            Napačni odgovori
+            Incorrect answers
           </h1>
 
           <div className="container flex max-w-xl flex-col gap-12">
