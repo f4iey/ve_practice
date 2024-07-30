@@ -7,7 +7,7 @@ interface ModalProps {
   onSelect: (choice: 'Basic' | 'Advanced') => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ show, onClose, onSelect }) => {
+export const Modal: React.FC<ModalProps> = ({ show, onClose, onSelect }) => {
   if (!show) return null;
 
   return (
@@ -38,5 +38,3 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, onSelect }) => {
     </div>
   );
 };
-
-export default Modal;

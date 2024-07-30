@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Modal from '../components/modal';
+import { Modal } from '@/components/modal';
 import { Question } from '@/interfaces/question';
 import { getExamQuestions } from '@/util/question-util';
 import { create } from 'zustand';
