@@ -3,11 +3,11 @@ import { QuestionList } from './list';
 import { SubHeader } from '@/components/sub_header';
 
 export const metadata: Metadata = {
-  title: 'Zbirka vprašanj',
-  description: 'Zbirka vprašanj, ki se lahko pojavijo na izpitu.',
+  title: 'Question base',
+  description: 'Questions base, that are asked for the exam.',
   openGraph: {
-    title: 'Zbirka vprašanj',
-    description: 'Zbirka vprašanj, ki se lahko pojavijo na izpitu.',
+    title: 'Question base',
+    description: 'Questions base, that are asked for the exam.',
   },
 };
 
@@ -15,9 +15,9 @@ export default function QuestionPool() {
   return (
     <>
       <SubHeader>
-        <h1>Zbirka vprašanj</h1>
+        <h1>Question base</h1>
         <p className="text-lg">
-          Seznam vseh vprašanj, ki se lahko pojavijo na izpitu.
+          Full question pool, containing everything that can be asked for the exam.
         </p>
       </SubHeader>
       <QuestionList />;

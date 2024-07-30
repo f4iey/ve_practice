@@ -103,7 +103,7 @@ export default function VajaQuiz() {
                 load(selectedCategory);
               }}
             >
-              <option value="all">Vse kategorije</option>
+              <option value="all">All categories</option>
               {categories.map((category, i) => (
                 <option key={i} value={category.id}>
                   {category.title}
@@ -116,7 +116,7 @@ export default function VajaQuiz() {
               disabled={isLoading}
               onClick={!isLoading ? () => load(selectedCategory) : undefined}
             >
-              Naloži
+              Load
             </button>
           </div>
         </div>
@@ -144,7 +144,7 @@ export default function VajaQuiz() {
         {questions.length > displayed && (
           <div className="flex flex-row justify-center gap-3">
             <button className="button" onClick={loadMore}>
-              Naloži več
+              Load more
             </button>
           </div>
         )}

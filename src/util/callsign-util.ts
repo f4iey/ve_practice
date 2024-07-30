@@ -1,7 +1,7 @@
 export function generateRandomCallsign(): string {
   const length = Math.ceil(Math.random() * 3);
-  let callsign = `S5${String.fromCharCode(
-    Math.floor(Math.random() * 10) + 48,
+  let prefixes = ["V01", "V02", "VY0", "VY1", "VY2", "VE" + Math.floor(Math.random() * 8), "VA" + Math.floor(Math.random() * 8)];
+  let callsign = `${prefixes[Math.floor(Math.random() * prefixes.length)],
   )}`;
   for (let i = 0; i < length; i++) {
     callsign += String.fromCharCode(Math.floor(Math.random() * 26) + 65);

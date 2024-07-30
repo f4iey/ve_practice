@@ -4,11 +4,11 @@ import Link from 'next/link';
 import RandomCallsign from './random_callsign';
 
 export const metadata: Metadata = {
-  title: 'Radioamatersko dovoljenje',
-  description: 'O radioamaterskem dovoljenju in klicnem znaku',
+  title: 'Amateur Radio Certificate',
+  description: 'About Amateur Radio Callsign Certificate',
   openGraph: {
-    title: 'Radioamatersko dovoljenje',
-    description: 'O radioamaterskem dovoljenju in klicnem znaku',
+    title: 'Amateur Radio Certificate',
+    description: 'About Amateur Radio Callsign Certificate',
   },
 };
 
@@ -17,139 +17,147 @@ export default function License() {
     <>
       <SubHeader>
         <h1>
-          Radioamatersko dovoljenje
+          Amateur Radio Operator Certificate
           <br />
-          (CEPT licenca)
+          (Canadian License)
         </h1>
         <p>
-          Radioamaterska dovoljenja izdaja{' '}
-          <Link target="_blank" href="https://www.akos-rs.si/">
-            agencija za komunikacijska omrežja in storitve Republike Slovenije
-            (AKOS)
+          Your amateur radio callsign is issued by{' '}
+          <Link target="_blank" href="https://ised-isde.canada.ca">
+            Innovation, Science and Economic Development Canada
+            (ISED)
           </Link>
           .
         </p>
         <p>
-          Po opravljenem izpitu lahko zaprosiš za radioamatersko dovoljenje, ki
-          ga lahko uporabljaš v vseh{' '}
-          <Link
-            target="_blank"
-            href="https://en.wikipedia.org/wiki/European_Conference_of_Postal_and_Telecommunications_Administrations"
-          >
-            državah članicah CEPT
-          </Link>
-          .
+          This license allows you to operate in Canada and some foreign countries holding agreements with Canada (CEPT/IARP).        .
         </p>
       </SubHeader>
 
       <div className="section container prose">
-        <h2>Klicni znak</h2>
+        <h2>Callsign</h2>
         <p>
-          Klicne znake v Sloveniji določa <strong>6. člen</strong>{' '}
+          Callsign attribution in Canada is described as per <strong>RIC-9:</strong>{' '}
           <Link
             target="_blank"
-            href="https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2023-01-0256/#(klicni%C2%A0znaki)"
+            href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-9-call-sign-policy-and-special-event-prefixes"
           >
-            splošnega akta o pogojih za uporabo radijskih frekvenc, namenjenih
-            radioamaterski in radioamaterski satelitski storitvi
+            Call Sign Policy and Special Event Prefixes
           </Link>
           .
         </p>
         <p>
-          Klicni znak, s katerim se identificira oddajanje radioamaterske
-          radijske postaje, je sestavljen iz:
+          An amateur radio callsign is composed of:
         </p>
         <ul>
-          <li>črke in številke &quot;S5&quot;</li>
-          <li>ene številke od 0 do 9 in</li>
-          <li>ene, dveh ali treh črk od 26-ih črk mednarodne abecede (A-Z).</li>
+          <li>A prefix depending on the province:</li>
+          <table class="table table-hover table-bordered small"><caption class="bg-primary">Prefixes currently used for assignment</caption>
+            <tbody>
+              <tr>  
+                <th id="un_1">Prefix </th>  <th id="un_2">Province/Territory</th> 
+              </tr>   
+              <tr>      
+                <td headers="un_1">VE1 VA1</td>      
+                <td headers="un_2">Nova Scotia</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VE2 VA2</td>      
+                <td headers="un_2">Quebec</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VE3 VA3</td>      
+                <td headers="un_2">Ontario</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VE4 VA4</td>      
+                <td headers="un_2">Manitoba</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VE5 VA5</td>      
+                <td headers="un_2">Saskatchewan</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VE6 VA6</td>      
+                <td headers="un_2">Alberta</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VE7 VA7</td>      
+                <td headers="un_2">British Columbia</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VE8</td>      
+                <td headers="un_2">Northwest Territories</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VE9</td>      
+                <td headers="un_2">New Brunswick</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VE0*</td>      
+                <td headers="un_2">International Waters</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VO1</td>      
+                <td headers="un_2">Newfoundland</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VO2</td>      
+                <td headers="un_2">Labrador</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VY1</td>      
+                <td headers="un_2">Yukon Territory</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VY2</td>      
+                <td headers="un_2">Prince Edward Island</td>   
+              </tr>   
+              <tr>      
+                <td headers="un_1">VY0</td>      
+                <td headers="un_2">Nunavut Territory</td>   
+              </tr>
+            </tbody>
+          </table>
+          <li>a suffix, with 2 or 3 letters. 2 letter suffix is subject to a fee.</li>
         </ul>
 
         <RandomCallsign />
 
-        <h3>Izbira klicnega znaka</h3>
+        <h3>Callsign search</h3>
         <p>
-          Seznam zasedenih klicnih znakov je dostopen v{' '}
+          You can search for available callsigns at{' '}
           <Link
             target="_blank"
-            href="https://www.akos-rs.si/registri/seznam-registrov/radioamaterji"
+            href="https://apc-cap.ic.gc.ca/pls/apc_anon/query_amat_cs$.startup"
           >
-            registru radioamaterjev
+            ISED Amateur Callsign Search
           </Link>
           .
         </p>
         <p>
-          Klicni znak si lahko izbereš glede na razred izpita, ki si ga opravil.
+          You can choose your callsign prefix depending on your province. 3-letter suffix is customizable.
         </p>
-        <div className="my-6 flex flex-col gap-6 md:flex-row">
-          <div className="flex flex-1 flex-col gap-4 rounded-lg bg-light px-4 shadow-md">
-            <h3 className="text-center">N razred</h3>
-
-            <ul>
-              <li>S52AAA - S52XZZ in S52ZAA - S52ZZZ</li>
-              <li>S58AAA - S58XZZ</li>
-            </ul>
-          </div>
-          <div className="flex flex-1 flex-col gap-4 rounded-lg bg-light px-4 shadow-md">
-            <h3 className="text-center">A razred</h3>
-
-            <ul>
-              <li>S50A - S59Z</li>
-              <li>S50AA - S59ZZ</li>
-              <li>S50AAA - S50XZZ</li>
-              <li>S54AAA - S54XZZ in S54ZAA - S54ZZZ</li>
-              <li>S56AAA - S56XZZ in S56ZAA - S56ZZZ</li>
-              <li>S57AAA - S57XZZ in S57ZAA - S57ZZZ</li>
-              <li>S58ZAA - S58ZZZ</li>
-            </ul>
-          </div>
-        </div>
 
         <Link href="/klicni-znak" className="button w-full">
-          Pomagaj izbrati klicni znak
+          Amateur Radio Callsign Helper
         </Link>
       </div>
 
       <div className="flex bg-light">
         <div className="section container prose">
-          <h2>Vloga za radioamatersko dovoljenje</h2>
+          <h2>License Permit</h2>
           <p>
-            Vlogo za radioamatersko dovoljenje je možno oddati elektronsko (z
-            digitalnim potrdilom), ali pa z izpolnjenim obrazcem poslanega po
-            pošti.
+            Once requested, your license will be transmitted via postal mail to your Canadian address.
           </p>
           <p>
-            Priporočljivo je, da na vlogi izpolniš vse tri klicne znake, ki jih
-            želiš imeti v primeru, da je prvi klicni znak že zaseden ali pa ga
-            zavrnejo.
+            As long as the prefix matches your province along with a custom suffix is available, it will be automatically assigned to you.
           </p>
           <p>
-            Od začetka leta 2023 se za izdajo in podaljšanje radioamaterskega
-            dovoljenja <strong>plača uporabo dela radijskega spektra</strong>{' '}
-            (frekvenčnino) v višini 60 točk. Točka je vredna 0,66 € (2024).
+            You can also request a 2-letter suffix, but along with a fee.
           </p>
           <p>
-            Radioamatersko dovoljenje velja 15 let, po tem času pa ga je
-            potrebno podaljšati. Po poteku veljavnosti velja še 10 letni
-            moratorij za klicni znak.
+            You can also request a sequential callsign the ISED will choose for you.
           </p>
-
-          <div className="mt-6 flex flex-col gap-4 text-center md:flex-row">
-            <Link
-              target="_blank"
-              className="button flex-1"
-              href="https://evloge.akos-rs.si/"
-            >
-              Elektronska vloga
-            </Link>
-            <Link
-              target="_blank"
-              className="button flex-1"
-              href="https://www.akos-rs.si/fileadmin/user_upload/Vloga_za_radioamatersko_dovoljenje.dotx"
-            >
-              Obrazec
-            </Link>
-          </div>
         </div>
       </div>
     </>

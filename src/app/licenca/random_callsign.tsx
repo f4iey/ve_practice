@@ -5,7 +5,7 @@ import { generateRandomCallsign } from '@/util/callsign-util';
 import { robotoMono } from '@/fonts/fonts';
 
 export default function RandomCallsign() {
-  const [callsign, setCallsign] = useState<string>('S50ZRS');
+  const [callsign, setCallsign] = useState<string>('VE0RAC');
 
   useEffect(() => {
     const interval = setInterval(() => {
