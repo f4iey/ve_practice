@@ -24,7 +24,7 @@ def get_questions_db(exam_type):
 
 def txtdb_to_json(filename, exam_type):
     data = []
-    with open(filename, newline='') as csvfile:
+    with open(filename, newline='', encoding = "ISO-8859-1") as csvfile:
         questions = csv.DictReader(csvfile, delimiter=';', quotechar='|')
         for row in questions:
             # Convert lists of incorrect answers to individual dictionaries
@@ -53,9 +53,10 @@ def txtdb_to_json(filename, exam_type):
     questions_array = {"questions": data}
     final_json = get_category_array(exam_type)
     final_json.update(questions_array)
-    with open('questions.json', 'w') as json_file:
+    filename = 'questions.json' if exam_type == 'b' else 'questions_advanced.json'
+    with open(filename, 'w') as json_file:
         json.dump(final_json, json_file, indent=4)
-    print("File successfully written to questions.json!")
+    print("File successfully written to ", filename)
 
 def get_category_array(level):
     if level == 'b':
@@ -124,4 +125,4 @@ def get_category_array(level):
     return {"categories": category_schema}
 
 txtdb_to_json(get_questions_db('b'), 'b')
-#txtdb_to_json(get_questions_db('a'), 'a')
+txtdb_to_json(get_questions_db('a'), 'a')
