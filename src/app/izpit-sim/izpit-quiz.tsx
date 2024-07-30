@@ -76,7 +76,7 @@ export default function IzpitQuiz() {
         </div>
       )}
 
-      {state === QuizState.Loading && <div>Pripravljanje ...</div>}
+      {state === QuizState.Loading && <div>Loading ...</div>}
 
       {state === QuizState.InProgress && inProgress()}
 
